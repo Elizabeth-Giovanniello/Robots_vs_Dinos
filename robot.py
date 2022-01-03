@@ -1,12 +1,15 @@
+from weapon import Weapon
+
 class Robot:
-    def __init__(self, name, weapon):
+    def __init__(self, name, weapon_name, weapon_attack):
         self.name = name
-        self.weapon = weapon
+        self.weapon = Weapon(weapon_name, weapon_attack)
         self.health = 100 #COME BACK AND ADJUST THIS AS NEEDED
 
     def attack(self, dino):
         print(f"{self.name} has attacked {dino} with {self.weapon.name}!")
-        return self.weapon.attack_power
+        dino.health -= self.weapon.attack_power
+        #return self.weapon.attack_power    #only necessary if we keep receive damage method
 
     #def receive_damage(self, damage_points):
         #self.health -= damage_points
