@@ -6,3 +6,6 @@ class Dinosaur:
     
     def attack(self, robot):
         pass
+
+    def receive_damage(self, damage_points):
+        self.health -= damage_points

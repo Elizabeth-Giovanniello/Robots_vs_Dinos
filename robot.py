@@ -6,3 +6,6 @@ class Robot:
 
     def attack(self, dino):
         pass
+
+    def receive_damage(self, damage_points):
+        self.health -= damage_points
