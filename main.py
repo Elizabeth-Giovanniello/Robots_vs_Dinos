@@ -41,7 +41,10 @@
 
 
 
-#Other things I may want to add in for fun: extra dinosaurs and robots, and the user can choose which three go head to head. Possibly even make it so user picks which two face off each round?
+#~ Other things I may want to add in for fun: extra dinosaurs and robots, and the user can choose which three go head to head. Possibly even make it so user picks which two face off each round?
+
+#~ could potentially add a "catch phrase" for each weapon choice in the list, and then add it into the print statement for the attack method. If I feel like it.
+
 
 from battlefield import Battlefield
 

@@ -6,13 +6,21 @@ class Dinosaur:
         self.name = name
         self.health = 100
         self.attack_power = attack_power
-        self.attack_options = attacks
+        self.energy_level = 100
+        self.attack_options = attacks #added in a way to pass in a list of the dinosaur's attack options so we are only dealing with the relevant list
     
     def attack(self, robot):
         self.choose_attack()
-        print(f"{self.name} has attacked {robot.name} by {self.attack_name}!")
-        robot.health -= self.attack_power
-    
+        print(f"{self.name} has attacked {robot.name} by {self.attack_name}!") # TODO possibly fix this wording so it makes more sense
+        if self.energy_level < self.attack_power:
+            partial_attack_power = self.energy_level
+            robot.health -= partial_attack_power      #this way you can't inflict more damage than you have energy for
+            self.energy_level -= partial_attack_power
+            print(f"{self.name} did not have enough energy to complete this attack, and has collapsed from exhaustion mid-strike!")
+        else:
+            robot.health -= self.attack_power
+            self.energy_level -= self.attack_power #their energy level reduces by the same level as their attack power, so heavier hitters need to recharge more often
+
     def choose_attack(self):
         print(f"{self.name}'s attack options are: ")
         self.num = 1
@@ -25,5 +33,8 @@ class Dinosaur:
             self.attack_name = self.attack_options[self.attack_index]
         else:
             self.attack_name = random.choice(self.attack_options)
+    
+    def power_nap(self):
+        self.energy_level = 100
 
   

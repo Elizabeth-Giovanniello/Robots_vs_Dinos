@@ -34,23 +34,30 @@ class Battlefield:
             print("And there you have it, folks! In the ultimate showdown between robots and dinosaurs, robots are the only ones left standing. We haven't seen a defeat this crushing since the meteor hit!")
 
     def dino_turn(self):
-        self.attacker = random.choice(self.herd.dinosaurs)
-        self.target = random.choice(self.fleet.robots)
-        print(f"This round we have {self.attacker.name} attacking {self.target.name}. ")
-        self.attacker.choose_attack()
-        self.attacker.attack(self.target)
-        if self.target.health <= 0:
-            self.fleet.robots.remove(self.target)
-            print(f"Following the last attack, {self.target.name}'s circuitry has taken too much damage, and is no longer functional. {self.target.name} is no longer part of this fleet.")
+        attacker = random.choice(self.herd.dinosaurs)
+        target = random.choice(self.fleet.robots)
+        if attacker.energy_level <= 0:  #once an attacker's energy level is depleted, he needs to skip a turn to recharge it
+            print(f"This round we have {attacker.name} attacking {target.name}, but it appears {attacker.name} is completely exhausted from previous rounds. {attacker.name} forfeits his turn so he can rest and regain his energy. ")
+            attacker.power_nap()
+        else:
+            print(f"This round we have {attacker.name} attacking {target.name}. ")
+            attacker.attack(target)
+            if target.health <= 0:
+                self.fleet.robots.remove(target)
+                print(f"Following the last attack, {target.name}'s circuitry has taken too much damage, and is no longer functional. {target.name} is no longer part of this fleet.")
 
     def robo_turn(self):
-        self.attacker = random.choice(self.fleet.robots)
-        self.target = random.choice(self.herd.dinosaurs)
-        print(f"This round we have {self.attacker.name} attacking {self.target.name}. ")
-        self.attacker.attack(self.target)
-        if self.target.health <= 0:
-            self.herd.dinosaurs.remove(self.target)
-            print(f"Following the last attack, {self.target.name} has been too severely wounded, and has died. {self.target.name} is no longer part of this herd.")
+        attacker = random.choice(self.fleet.robots)
+        target = random.choice(self.herd.dinosaurs)
+        if attacker.power_level <= 0:
+            print(f"This round we have {attacker.name} attacking {target.name}, but it appears {attacker.name} completely drained its battery during the previous round. {attacker.name} forfeits its turn to recharge.")
+            attacker.recharge_batteries()
+        else:
+            print(f"This round we have {self.attacker.name} attacking {self.target.name}. ")
+            attacker.attack(target)
+            if target.health <= 0:
+                self.herd.dinosaurs.remove(target)
+                print(f"Following the last attack, {target.name} has been too severely wounded, and has died. {target.name} is no longer part of this herd.")
 
     def show_dino_opponent_options(self):
         self.herd.create_herd()
