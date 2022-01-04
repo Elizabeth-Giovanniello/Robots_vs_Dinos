@@ -35,28 +35,28 @@ class Battlefield:
     def dino_turn(self):
         self.attacker = random.choice(self.herd.dinosaurs)
         self.target = random.choice(self.fleet.robots)
-        print(f"This round we have {self.attacker} attacking {self.target}. ")
+        print(f"This round we have {self.attacker.name} attacking {self.target.name}. ")
         self.attacker.attack(self.target)
         if self.target.health <= 0:
             self.fleet.robots.remove(self.target)
-            print(f"Following the last attack, {self.target}'s circuitry has taken too much damage, and is no longer functional. {self.target} is no longer part of this fleet.")
+            print(f"Following the last attack, {self.target.name}'s circuitry has taken too much damage, and is no longer functional. {self.target.name} is no longer part of this fleet.")
 
     def robo_turn(self):
         self.attacker = random.choice(self.fleet.robots)
         self.target = random.choice(self.herd.dinosaurs)
-        print(f"This round we have {self.attacker} attacking {self.target}. ")
+        print(f"This round we have {self.attacker.name} attacking {self.target.name}. ")
         self.attacker.attack(self.target)
         if self.target.health <= 0:
             self.herd.dinosaurs.remove(self.target)
-            print(f"Following the last attack, {self.target} has been too severely wounded, and has died. {self.target} is no longer part of this herd.")
+            print(f"Following the last attack, {self.target.name} has been too severely wounded, and has died. {self.target.name} is no longer part of this herd.")
 
     def show_dino_opponent_options(self):
         self.herd.create_herd()
-        print(f"Representing Team Dinosaur we have {self.herd.dino_one}, {self.herd.dino_two}, and {self.herd.dino_three}!")
+        print(f"Representing Team Dinosaur we have {self.herd.dino_one.name}, {self.herd.dino_two.name}, and {self.herd.dino_three.name}!")
 
     def show_robo_opponent_options(self):
         self.fleet.create_fleet()
-        print(f"Annnnndddd representing Team Robot we have {self.fleet.robot_one}, {self.fleet.robot_two}, and {self.fleet.robot_three}!")
+        print(f"Annnnndddd representing Team Robot we have {self.fleet.robot_one.name}, {self.fleet.robot_two.name}, and {self.fleet.robot_three.name}!")
 
     def display_winners(self):
         if len(self.herd.dinosaurs) == 0:
