@@ -12,7 +12,7 @@ class Fleet:
         self.robots.append(self.robot_three)
 
     def choose_robots(self):
-        print("Before the battle begins, YOU have the opportunity to choose which competitors will represent Team Robot. Your options are: ")
+        print("Now it's time to choose which competitors will represent Team Robot. Your options are: ")
         self.roomba_weapons = [["shards of glass from a lamp you broke", 5], ["thumb tacks that fell on the floor", 3], ["a dust bomb", 10]]
         self.alexa_weapons = [["a piercingly high-pitched noise that shuts down one's central nervous system", 50], ["mind control", 10]] 
         self.blender_weapons = [["rotating blades", 20], ["an exploding kale smoothie", 10], ["ice cube projectiles", 25]]
@@ -29,7 +29,7 @@ class Fleet:
         self.robot_microwave = Robot("Microwave oven", self.microwave_weapons)
         self.robot_wall_e = Robot("WALL-E", self.wall_e_weapons)
 
-        self.robot_competitors = [self.robot_roomba, self.robot_alexa, self.robot_blender, self.robot_drone, self.robot_r2d2, self.robot_microwave, self.wall_e_weapons]
+        self.robot_competitors = [self.robot_roomba, self.robot_alexa, self.robot_blender, self.robot_drone, self.robot_r2d2, self.robot_microwave, self.robot_wall_e]
 
         self.num = 1
         self.something = True

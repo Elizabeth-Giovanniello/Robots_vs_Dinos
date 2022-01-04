@@ -37,6 +37,7 @@ class Battlefield:
         self.attacker = random.choice(self.herd.dinosaurs)
         self.target = random.choice(self.fleet.robots)
         print(f"This round we have {self.attacker.name} attacking {self.target.name}. ")
+        self.attacker.choose_attack()
         self.attacker.attack(self.target)
         if self.target.health <= 0:
             self.fleet.robots.remove(self.target)

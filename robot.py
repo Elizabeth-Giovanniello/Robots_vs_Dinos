@@ -28,7 +28,8 @@ class Robot:
             self.weapon_index = int(self.user_choice) - 1
             self.weapon = Weapon(self.weapon_options[self.weapon_index][0], self.weapon_options[self.weapon_index][1])
         else:
-            self.weapon = Weapon(random.choice(self.weapon_options))
+            self.weapon = random.choice(self.weapon_options)
+            self.weapon = Weapon(self.weapon[0], self.weapon[1])
         print(f"{self.name} will be using {self.weapon.name} as its weapon. ")
 
 
