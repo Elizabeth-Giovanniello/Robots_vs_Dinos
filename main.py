@@ -29,11 +29,19 @@
 
 #Bonus points:
 
-#(/5 points): As a developer, I want a Robot to have the ability to choose from a List of different weapons that will be then assigned as its own weapon.
+#(/5 points): As a developer, I want a Robot to have the ability to choose from a List of different weapons that will 
+# be then assigned as its own weapon.
 
-#(/5 points): As a developer, I want a Dinosaur to have the ability to choose its attack name from a tuple of different attack names before attacking a Robot in battle.
+#(/5 points): As a developer, I want a Dinosaur to have the ability to choose its attack name from a tuple of 
+# different attack names before attacking a Robot in battle.
 
-#(/2 points): As a developer, I want a Robot to have a power level and a Dinosaur to have an energy, which will decrease by 10 every time they attack.
+#(/2 points): As a developer, I want a Robot to have a power level and a Dinosaur to have an energy, which will 
+# decrease by 10 every time they attack.
+
+
+
+
+#Other things I may want to add in for fun: extra dinosaurs and robots, and the user can choose which three go head to head. Possibly even make it so user picks which two face off each round?
 
 from battlefield import Battlefield
 

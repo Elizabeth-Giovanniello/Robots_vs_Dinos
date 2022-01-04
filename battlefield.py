@@ -10,6 +10,7 @@ class Battlefield:
     
     def run_game(self):
         self.display_welcome()
+        self.fleet.choose_robots()
         self.show_dino_opponent_options()
         self.show_robo_opponent_options()
         self.battle()

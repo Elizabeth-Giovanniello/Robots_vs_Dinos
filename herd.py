@@ -11,9 +11,3 @@ class Herd:
         self.dinosaurs.append(self.dino_one)
         self.dinosaurs.append(self.dino_two)
         self.dinosaurs.append(self.dino_three)
-
-    def dead_dino(self):
-        for dino in self.dinosaurs:
-            if dino.health <= 0:
-                self.dinosaurs.remove(dino)
-                print(f"Following the last attack, {dino} has been too severely wounded, and has died. {dino} is no longer part of this herd.")
