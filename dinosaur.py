@@ -23,14 +23,14 @@ class Dinosaur:
 
     def choose_attack(self):
         print(f"{self.name}'s attack options are: ")
-        self.num = 1
+        num = 1
         for item in self.attack_options:
-            print(f"{self.num}. {item.capitalize()}")
-            self.num += 1
-        self.user_choice = input(f"Enter the number of the attack you want {self.name} to use for this round. Enter any other character for an attack to be randomly assigned. ")
-        if int(self.user_choice) > 0 and int(self.user_choice) <= len(self.attack_options):
-            self.attack_index = int(self.user_choice) - 1
-            self.attack_name = self.attack_options[self.attack_index]
+            print(f"{num}. {item.capitalize()}")
+            num += 1
+        user_choice = input(f"Enter the number of the attack you want {self.name} to use for this round. Enter any other character for an attack to be randomly assigned. ")
+        if int(user_choice) > 0 and int(user_choice) <= len(self.attack_options):
+            attack_index = int(user_choice) - 1
+            self.attack_name = self.attack_options[attack_index]
         else:
             self.attack_name = random.choice(self.attack_options)
     

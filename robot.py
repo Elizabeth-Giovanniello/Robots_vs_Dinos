@@ -22,15 +22,15 @@ class Robot:
         self.power_level -= self.weapon.attack_power
             
     def choose_weapon(self):
-        print(f"Now that you have chosen {self.name} as one of your robot champions, you must choose its weapon from the following options: ")
-        self.num = 1
+        print(f"\nNow that you have chosen {self.name} as one of your robot champions, you can choose its weapon from the following options: ")
+        num = 1
         for item in self.weapon_options:
-            print(f"{self.num}. {item[0].capitalize()}")
-            self.num += 1
-        self.user_choice = input("Enter the number of the weapon you want your chosen robot champion to bear. Enter any other character for a weapon to be randomly assigned. ")
-        if int(self.user_choice) > 0 and int(self.user_choice) <= len(self.weapon_options):
-            self.weapon_index = int(self.user_choice) - 1
-            self.weapon = Weapon(self.weapon_options[self.weapon_index][0], self.weapon_options[self.weapon_index][1])
+            print(f"{num}. {item[0].capitalize()}")
+            num += 1
+        user_choice = input("\nEnter the number of the weapon you want your chosen robot champion to bear. Enter any other character for a weapon to be randomly assigned. ")
+        if int(user_choice) > 0 and int(user_choice) <= len(self.weapon_options):
+            weapon_index = int(user_choice) - 1
+            self.weapon = Weapon(self.weapon_options[weapon_index][0], self.weapon_options[weapon_index][1])
         else:
             self.weapon = random.choice(self.weapon_options)
             self.weapon = Weapon(self.weapon[0], self.weapon[1])
