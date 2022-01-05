@@ -45,6 +45,10 @@
 
 #~ could potentially add a "catch phrase" for each weapon choice in the list, and then add it into the print statement for the attack method. If I feel like it.
 
+#~Rather than having the user pick the competitors we could try to make it so the same person who just got attacked retaliates on the attacker? 
+
+#~ Also, we could make the energy drain a number associated with the attack for dinosaurs instead of attack power. Or we could mayhbe also associate attack power
+
 
 
 

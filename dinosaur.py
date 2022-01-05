@@ -11,13 +11,13 @@ class Dinosaur:
     
     def attack(self, robot):
         self.choose_attack()
-        print(f"{self.name} has attacked {robot.name} by {self.attack_description}!") # TODO possibly fix this wording so it makes more sense
-        if self.energy_level < self.attack_power:
+        if self.energy_level < self.attack_power:   # TODO come back and move things around so we have a different attack description when energy is too low
             partial_attack_power = self.energy_level
             robot.health -= partial_attack_power      #this way you can't inflict more damage than you have energy for
             self.energy_level -= partial_attack_power
-            print(f"{self.name} did not have enough energy to complete this attack, and has collapsed from exhaustion mid-strike!")
+            print(f"{self.name} is entering the arena. He's looking a little pale, a little unsteady... but it looks like he's going to try and push through, he's going in for the attack! He's made contact and-- my God, {self.name} just dropped to the floor like a sack of bricks. Did he just pass out?! Wow, {robot.name} got off easy there! \n\n{self.name} did not have enough energy to complete this attack, and has collapsed from exhaustion mid-strike!")
         else:
+            print(f"{self.name} is entering the arena. {self.attack_script_one}{robot.name}{self.attack_script_two}")   #these descriptions are specific to a successful attack
             robot.health -= self.attack_power
             self.energy_level -= self.attack_power #their energy level reduces by the same level as their attack power, so heavier hitters need to recharge more often
 
@@ -31,11 +31,13 @@ class Dinosaur:
         if int(user_choice) > 0 and int(user_choice) <= len(self.attack_options):
             attack_index = int(user_choice) - 1
             self.attack_name = self.attack_options[attack_index][0]
-            self.attack_description = self.attack_options[attack_index][1]
+            self.attack_script_one = self.attack_options[attack_index][1]
+            self.attack_script_two = self.attack_options[attack_index][2]
         else:
             attack_selection = random.choice(self.attack_options)
             self.attack_name = attack_selection[0]
-            self.attack_description = attack_selection[1]
+            self.attack_script_one = attack_selection[1]
+            self.attack_script_two = attack_selection[2]
     
     def power_nap(self):
         self.energy_level = 100
