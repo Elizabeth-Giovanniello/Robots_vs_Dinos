@@ -23,13 +23,16 @@ class Battlefield:
     def battle(self):
         print("Let the battle begin! ")
         current_team = self.coin_flip()
+        round = 1
         while len(self.herd.dinosaurs) > 0 and len(self.fleet.robots) >0:
+            print(f"\nRound {round}:")
             if current_team == "Team Robot":
                 self.robo_turn()
                 current_team = "Team Dinosaur"
             else: 
                 self.dino_turn()
                 current_team = "Team Robot"
+            round += 1
         if len(self.herd.dinosaurs) > 0:
             print("\nAnd that does it, folks! As the only team left standing, the dinosaurs WIN! I guess that just goes to show, modern technology has its limits.")
         elif len(self.fleet.robots) > 0: 

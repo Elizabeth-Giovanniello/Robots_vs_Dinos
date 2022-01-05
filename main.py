@@ -54,4 +54,4 @@ todays_battle = Battlefield()
 
 todays_battle.run_game()
 
-# TODO add new lines to dialogue to make it more readable. change verbage of dino attacks. let user select opponents each round. consider adding specific descriptions of the attacks? change must to can
+# TODO add new lines to dialogue to make it more readable. change verbage of dino attacks. let user select opponents each round. consider adding specific descriptions of the attacks? 

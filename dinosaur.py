@@ -11,7 +11,7 @@ class Dinosaur:
     
     def attack(self, robot):
         self.choose_attack()
-        print(f"{self.name} has attacked {robot.name} by {self.attack_name}!") # TODO possibly fix this wording so it makes more sense
+        print(f"{self.name} has attacked {robot.name} by {self.attack_description}!") # TODO possibly fix this wording so it makes more sense
         if self.energy_level < self.attack_power:
             partial_attack_power = self.energy_level
             robot.health -= partial_attack_power      #this way you can't inflict more damage than you have energy for
@@ -25,14 +25,17 @@ class Dinosaur:
         print(f"{self.name}'s attack options are: ")
         num = 1
         for item in self.attack_options:
-            print(f"{num}. {item.capitalize()}")
+            print(f"{num}. {item[0].capitalize()}")   #printing a numbered list of options for the user
             num += 1
-        user_choice = input(f"Enter the number of the attack you want {self.name} to use for this round. Enter any other character for an attack to be randomly assigned. ")
+        user_choice = input(f"\nEnter the number of the attack you want {self.name} to use for this round. Enter any other character for an attack to be randomly assigned. ")
         if int(user_choice) > 0 and int(user_choice) <= len(self.attack_options):
             attack_index = int(user_choice) - 1
-            self.attack_name = self.attack_options[attack_index]
+            self.attack_name = self.attack_options[attack_index][0]
+            self.attack_description = self.attack_options[attack_index][1]
         else:
-            self.attack_name = random.choice(self.attack_options)
+            attack_selection = random.choice(self.attack_options)
+            self.attack_name = attack_selection[0]
+            self.attack_description = attack_selection[1]
     
     def power_nap(self):
         self.energy_level = 100
