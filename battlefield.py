@@ -20,32 +20,36 @@ class Battlefield:
     def display_welcome(self):
         print("\nWelcome to the ultimate battle of the ages, where we pit the ingenuity of modern technology against the brute strength of the prehistoric era! In this no holds barred fight to the death, I give you: Robots versus Dinosaurs!")
     
+    #has members of each side take turns attacking each other until one team kills off the other
     def battle(self):
-        print("Let the battle begin! ")
+        print("\nLet the battle begin! ")
         current_team = self.coin_flip()
         round = 1
-        while len(self.herd.dinosaurs) > 0 and len(self.fleet.robots) >0:
-            nominated_bot = self.nominate_robot_champion()
+        while len(self.herd.dinosaurs) > 0 and len(self.fleet.robots) >0:   #continues to run until all members of a group have died
+            nominated_bot = self.nominate_robot_champion()  #randomly chooses a member of each team for each new round
             nominated_dino = self.nominate_dino_champion()
             if current_team == "Team Robot":
                 print(f"\nRound {round}: {nominated_bot.name} vs. {nominated_dino.name}")
                 print(f"\nTeam Robot has nominated {nominated_bot.name} as their champion for this round. {nominated_bot.name} has decided to challenge {nominated_dino.name} to battle. ")
+                print(f"\n{nominated_bot.name} and {nominated_dino.name} have entered the arena. ")
                 self.robo_turn(nominated_bot, nominated_dino)
                 if nominated_dino in self.herd.dinosaurs:
-                    print(f"{nominated_dino.name} now has the chance to respond to {nominated_bot.name}'s attack. ")
+                    print(f"\n{nominated_dino.name} now has the chance to respond to {nominated_bot.name}'s attack. ")
                     self.dino_turn(nominated_dino, nominated_bot)
-                current_team = "Team Dinosaur"
+                current_team = "Team Dinosaur"    #changes current_team at the end to switch off which team attacks first
             else: 
                 print(f"\nRound {round}: {nominated_dino.name} vs. {nominated_bot.name}")
-                print(f"\nTeam Dinosaur has nominated {nominated_dino} as their champion for this round. {nominated_dino.name} has decided to challenge {nominated_bot.name} to battle. ")
+                print(f"\nTeam Dinosaur has nominated {nominated_dino.name} as their champion for this round. {nominated_dino.name} has decided to challenge {nominated_bot.name} to battle. ")
+                print(f"{nominated_dino.name} and {nominated_bot.name} have entered the arena. ")
                 self.dino_turn(nominated_dino, nominated_bot)
-                if nominated_dino in self.fleet.robots:
-                    print(f"{nominated_bot.name} now has the chance to respond to {nominated_dino.name}'s attack. ")
+                if nominated_bot in self.fleet.robots:
+                    print(f"\n{nominated_bot.name} now has the chance to respond to {nominated_dino.name}'s attack. ")
                     self.robo_turn(nominated_bot, nominated_dino)
                 current_team = "Team Robot"
             round += 1
             self.print_health_status(nominated_bot)
             self.print_health_status(nominated_dino)
+        #ending dialogue that runs once one team has been defeated
         if len(self.herd.dinosaurs) > 0:
             print("\nAnd that does it, folks! As the only team left standing, the dinosaurs WIN! I guess that just goes to show, modern technology has its limits.")
         elif len(self.fleet.robots) > 0: 
@@ -60,18 +64,18 @@ class Battlefield:
         else:
             attacker.attack(target)
             if target.health <= 0:
-                self.fleet.robots.remove(target)
+                self.fleet.robots.remove(target)    #once a robot's health hits 0, it is removed from the fleet
                 print(f"\nFollowing the last attack, {target.name}'s circuitry has taken too much damage, and is no longer functional. {target.name} is no longer part of this fleet.")
 
     def robo_turn(self, robot, dino):
         attacker = robot
         target = dino
-        if attacker.power_level <= 0:
+        if attacker.power_level <= 0:   #attacker loses turn due to depleted energy
             print(f"\nIt is now {attacker.name}'s turn to attack {target.name}, but it appears {attacker.name} completely drained its battery during the previous round. {attacker.name} forfeits its turn to recharge.")
             attacker.recharge_batteries()
         else:
             attacker.attack(target)
-            if target.health <= 0:
+            if target.health <= 0:     #once a dino's health hits 0, it is removed from the herd
                 self.herd.dinosaurs.remove(target)
                 print(f"\nFollowing the last attack, {target.name} has been too severely wounded, and has died. {target.name} is no longer part of this herd.")
 
@@ -89,15 +93,14 @@ class Battlefield:
         else:
             print("Winner: Dinosaurs")
 
+    #determines which side gets to go first
     def coin_flip(self):
         competitors = ["Team Robot", "Team Dinosaur"]
         starting_team = random.choice(competitors)
         print(f"\nA random coin flip has determined that {starting_team} will have the first turn. ")
         return starting_team
 
-
-
-
+    #chooses random competitors for each new round
     def nominate_robot_champion(self):
         nominated_bot = random.choice(self.fleet.robots)
         return nominated_bot
@@ -116,4 +119,4 @@ class Battlefield:
                 health_status = "Low"
             else:
                 health_status = "Critical"
-            print(f"Health status for {fighter}: {health_status}")
+            print(f"\nHealth status for {fighter.name}: {health_status}")

@@ -40,25 +40,9 @@
 
 
 
-
-#~ Other things I may want to add in for fun: make it so user picks which two face off each round?
-
-#~ could potentially add a "catch phrase" for each weapon choice in the list, and then add it into the print statement for the attack method. If I feel like it.
-
-#~Rather than having the user pick the competitors we could try to make it so the same person who just got attacked retaliates on the attacker? 
-
-#~ Also, we could make the energy drain a number associated with the attack for dinosaurs instead of attack power. Or we could mayhbe also associate attack power with a specific attack? 
-# hmm NO NO INSTEAD: we can give each fighter a "durability" score, and the energy drain is based on how durable the opponent was. hmmm
-
-#~could make it so that the damage the attackee has taken is printed at the end of each round
-
-
-
-
 from battlefield import Battlefield
 
 todays_battle = Battlefield()
 
 todays_battle.run_game()
 
-# TODO add new lines to dialogue to make it more readable. change verbage of dino attacks. let user select opponents each round. consider adding specific descriptions of the attacks? 
