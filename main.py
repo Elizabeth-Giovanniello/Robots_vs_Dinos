@@ -47,7 +47,10 @@
 
 #~Rather than having the user pick the competitors we could try to make it so the same person who just got attacked retaliates on the attacker? 
 
-#~ Also, we could make the energy drain a number associated with the attack for dinosaurs instead of attack power. Or we could mayhbe also associate attack power
+#~ Also, we could make the energy drain a number associated with the attack for dinosaurs instead of attack power. Or we could mayhbe also associate attack power with a specific attack? 
+# hmm NO NO INSTEAD: we can give each fighter a "durability" score, and the energy drain is based on how durable the opponent was. hmmm
+
+#~could make it so that the damage the attackee has taken is printed at the end of each round
 
 
 

@@ -9,7 +9,8 @@ class Robot:
         self.health = 100
         self.power_level = 100
         # * Changed out weapon to be weapon list for bonus story
-        self.weapon_options = weapon_list 
+        self.weapon_options = weapon_list
+      
 
     def attack(self, dino):
         print(f"{self.name} has attacked {dino.name} with {self.weapon.name}!")

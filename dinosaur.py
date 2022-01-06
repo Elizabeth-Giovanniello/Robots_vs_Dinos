@@ -15,9 +15,9 @@ class Dinosaur:
             partial_attack_power = self.energy_level
             robot.health -= partial_attack_power      #this way you can't inflict more damage than you have energy for
             self.energy_level -= partial_attack_power
-            print(f"{self.name} is entering the arena. He's looking a little pale, a little unsteady... but it looks like he's going to try and push through, he's going in for the attack! He's made contact and-- my God, {self.name} just dropped to the floor like a sack of bricks. Did he just pass out?! Wow, {robot.name} got off easy there! \n\n{self.name} did not have enough energy to complete this attack, and has collapsed from exhaustion mid-strike!")
+            print(f"\n{self.name} is entering the arena. He's looking a little pale, a little unsteady... but it looks like he's going to try and push through, he's going in for the attack! He's made contact and-- my God, {self.name} just dropped to the floor like a sack of bricks. Did he just pass out?! Wow, {robot.name} got off easy there! \n\n{self.name} did not have enough energy to complete this attack, and has collapsed from exhaustion mid-strike!")
         else:
-            print(f"{self.name} is entering the arena. {self.attack_script_one}{robot.name}{self.attack_script_two}")   #these descriptions are specific to a successful attack
+            print(f"\n{self.name} is entering the arena. {self.attack_script_one}{robot.name}{self.attack_script_two}")   #these descriptions are specific to a successful attack
             robot.health -= self.attack_power
             self.energy_level -= self.attack_power #their energy level reduces by the same level as their attack power, so heavier hitters need to recharge more often
 
